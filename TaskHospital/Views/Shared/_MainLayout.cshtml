@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title || Hospital online</title>
+    <!--Fontawoesomee -->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="wrapper">
+        <div class="TopBar">
+            <div class="contact-us">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-youtube-square"></i></a>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <header>
+            <!-- header-bottom-area start -->
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <div class="header-search form-group ">
+                                @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                                {@*<select>
+                                        <option value="0">All Categories</option>
+                                    </select>*@
+                                    <input type="text" name="searchName" id="searchName"
+                                           placeholder=" Search ..." value="" />
+                                    <button class="btn glyphicon glyphicon-search"></button>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="header-logo text-center">
+                                <a href="~/Home"> نور الحياة  <span>ن</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Navbar-->
+            <nav class="navbar main-menu ">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav  navbar-right">
+                            <li><a href="~/Home/Contact"><i class="glyphicon glyphicon-envelope"></i>  اتصل بنا</a> </li>
+                            <li>
+                                <a href="~/Home/Contact">
+                                    <i class="glyphicon glyphicon-envelope"></i>المعرض
+
+                                </a>
+                            </li>
+                            <li><a href="#"><i class="glyphicon glyphicon-dashboard"></i>  خدماتنا</a> </li>
+                            <li><a href="~/Home/About"><i class="glyphicon glyphicon-info-sign"></i> عن المستشفي</a></li>
+                            <li><a href="~/Home"><i class="glyphicon glyphicon-home"></i> الرئسية</a></li>
+
+                        </ul>
+                        <ul>
+                            <li>
+                            @Html.Partial("_LoginPartial")
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid">
+            <div class="row" style="min-height:400px">
+                @RenderBody()
+            </div>
+            <hr />
+        </div>
+        <!-- footer start -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12  col-sm-12">
+                        <div class="social-media">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-youtube-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12  col-sm-12">
+                        <div class="copyright">
+                            <p> All Rights Reserved to Our Hospita &copy; @DateTime.Now.Year</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12  col-sm-12">
+                        <div class="menu">
+                            <nav class="navbar menu ">
+                                <ul class="nav navbar-nav  navbar-right">
+                                    <li><a href="~/Home/Contact"><i class="glyphicon glyphicon-envelope"></i>  اتصل بنا</a> </li>
+                                    <li><a href="~/Home/About"><i class="glyphicon glyphicon-info-sign"></i> عن المستشفي</a></li>
+                                    <li><a href="~/Home"><i class="glyphicon glyphicon-home"></i> الرئسية</a></li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

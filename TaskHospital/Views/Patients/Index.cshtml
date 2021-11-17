@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TaskHospital.Models.Patient>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3 class="text-center">
+    @Html.ActionLink("  انشاء سجل جديد للمريض ", "Create")
+</h3>
+<table class="table">
+    <tr>
+        <th>الامر</th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomePhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.PatientNameEnglish)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientNameArabic)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("تعديل", "Edit", new { id = item.PatientCode }) |
+            @Html.ActionLink("تفاصيل ", "Details", new { id = item.PatientCode }) |
+            @Html.ActionLink("حذف", "Delete", new { id = item.PatientCode })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomePhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientNameEnglish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientNameArabic)
+        </td>
+    </tr>
+}
+
+</table>

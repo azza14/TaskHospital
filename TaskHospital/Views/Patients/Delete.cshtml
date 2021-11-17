@@ -1,0 +1,77 @@
+﻿@model TaskHospital.Models.Patient
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="text-right" style="margin:0 20px 0 20px">
+    <h2>حذف  بيانات  المريض   </h2>
+
+    <h3>هل تريد حذف بينات هذا المريض  ؟</h3>
+
+    <table class="table table-hover table-striped table-bordered" style="margin:0 20px 0 20px">
+        <tr>
+            <th class="text-center">
+                @Html.DisplayFor(model => model.PatientNameArabic)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.PatientNameArabic)
+            </th>
+
+        </tr>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayFor(model => model.PatientNameEnglish)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.PatientNameEnglish)
+            </th>
+
+        </tr>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayFor(model => model.Gender)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+        </tr>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayFor(model => model.PatientImage)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.PatientImage)
+            </th>
+        </tr>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+        </tr>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayFor(model => model.HomePhone)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.HomePhone)
+            </th>
+        </tr>
+    </table>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف " class="btn btn-danger" /> |
+            @Html.ActionLink("العودة الي الصفحة الرئسية ", "Index")
+        </div>
+    }
+</div>
+
+

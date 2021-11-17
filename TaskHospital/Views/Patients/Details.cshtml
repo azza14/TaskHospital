@@ -1,0 +1,49 @@
+﻿@model TaskHospital.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2 class="text-info text-center">عرض بيانات المريض </h2>
+<div class="detail-course">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="img-course">
+                    <img src="~/Uploads/@Html.DisplayFor(model => model.PatientImage)" />
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="detail-text">
+                    <h2>  @Html.DisplayFor(model => model.PatientNameArabic)</h2>
+
+                    <h3>
+                        <span>@Html.DisplayFor(model => model.PatientNameEnglish) </span>
+                    </h3>
+                    <div class=" detail-content">
+                        @Html.DisplayFor(model => model.Gender)
+                    </div>
+                    <label>
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </label>
+                    <br />
+                    <label>
+                        @Html.DisplayFor(model => model.HomePhone)
+                    </label>
+                    <label>
+                        @Html.DisplayFor(model => model.TypePatients.Name)
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--  end details  -->
+<p>
+    @Html.ActionLink("العودة الي الصفحة الرئسية", "Index", null, new { @class = "btn btn-primary col-md-offset-10" })
+    |
+    @Html.ActionLink("تعديل ", "Edit", new { id = Model.PatientCode }, new { @class = "btn btn-success" })
+</p>
+

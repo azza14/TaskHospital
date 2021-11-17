@@ -1,0 +1,29 @@
+﻿@model TaskHospital.Models.TypePatient
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div  class="text-right" style=" margin-right:20px">
+    <h4 >تفاصيل انواع المرضي </h4>
+    <hr />
+    <table class="table table-hover table-striped table-bordered" style="margin:0 20px 0 20px">
+        <tr>
+            <th class="text-center">
+                @Html.DisplayFor(model => model.Name)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+        </tr>
+        </table>
+</div>
+
+<div class="text-right" style=" margin:20px">
+    <button class="btn btn-success">
+        @Html.ActionLink("تعديل ", "Edit", new { id = Model.ID })
+    </button>|
+    @Html.ActionLink("العودة الي الصفحة الرئسية", "Index", null, new { @class = "btn btn-primary" })
+</div>

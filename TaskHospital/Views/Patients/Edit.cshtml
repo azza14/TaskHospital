@@ -1,0 +1,113 @@
+﻿@model TaskHospital.Models.Patient
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Edit", "Patients", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h2 class="text-right">تعديل بيانات المريض </h2>
+
+    <hr />
+    <!-- error div if there is no image selected-->
+    <div class="alert alert-danger" id="error-div" style="display:none">
+        <span id="view-error"></span>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.PatientCode)
+
+    <div class="form-group">
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.PatientNameArabic, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PatientNameArabic, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.PatientNameArabic, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.PatientNameEnglish, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PatientNameEnglish, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.PatientNameEnglish, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8">
+            <input type="file" name="upload" id="myImage" />
+            @*@Html.EditorFor(model => model.PatientImage, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.PatientImage, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.PatientImage, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8">
+            @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.HomePhone, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-8">
+            @Html.DropDownList("TypePatient", null, "-- اختر نوع المرض  --", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TypePatients_ID, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.TypePatients_ID, "نوع المرض   ", htmlAttributes: new { @class = "control-label col-md-2" })
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-8 col-md-10">
+            <input type="submit" value="حفظ" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("العودة الي الصفحة الرئسية", "Index", null, new { @class = "btn btn-primary col-md-offset-10" })
+</div>
+
+
+@section scripts{
+    <script>
+        $(function () {
+            $("#save").click(function () {
+                if ($("#myImage").val() == "") {
+                    $("#error-div").fadeIn();
+                    $("#view-error").append("لوسمحت اختر صورة  المريض   ")
+                    return false;
+                }
+            });
+        });
+    </script>
+}

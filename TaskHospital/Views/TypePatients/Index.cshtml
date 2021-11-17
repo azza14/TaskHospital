@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TaskHospital.Models.TypePatient>
+
+@{
+    ViewBag.Title = "الصفحة الرئسية";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<h3 class="text-center">
+    @Html.ActionLink("انشاء نوع جديد ", "Create")
+</h3>
+<table class="table table-hover table-striped table-bordered">
+    <tr>
+        <th class="text-center">الامر</th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("  تعديل النوع ", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("تفاصيل النوع ", "Details", new { id = item.ID }) |
+            @Html.ActionLink("حذف النوع ", "Delete", new { id = item.ID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+
+    </tr>
+}
+
+</table>
